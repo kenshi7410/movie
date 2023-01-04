@@ -46,7 +46,8 @@ const MovieDetail = () => {
   // cắt video từ youtube từ watch sang chuẩn embed để chèn vào web
 
   let trailer = "";
-  trailer = movieDetail && movieDetail.trailer.replace("watch?v=", "embed/");
+  trailer = movieDetail ;
+  console.log(trailer,"daasd")
 
   return (
     movieDetail && (
