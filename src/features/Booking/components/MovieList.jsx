@@ -10,7 +10,7 @@ const MovieList = () => {
   return (
     <div className="container mx-auto">
       <h1 className="text-center text-5xl font-normal">Danh Sách Phim</h1>
-      <Row gutter={30} className="mx-5">
+      <Row gutter={30}>
         {movies.items?.map((item) => (
           <Col key={item.maPhim} className="mb-7" xs={24} sm={12} md={8} lg={6}>
             <Card
@@ -40,7 +40,7 @@ const MovieList = () => {
         ))}
       </Row>
       {movies.items && (
-        <Pagination
+        <Pagination className="text-center"
           defaultCurrent={movies.currentPage}
           total={movies.totalCount}
           pageSize={8}
