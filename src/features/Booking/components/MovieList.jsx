@@ -40,7 +40,7 @@ const MovieList = () => {
         ))}
       </Row>
       {movies.items && (
-        <Pagination className="text-center"
+        <Pagination className="text-center mb-10"
           defaultCurrent={movies.currentPage}
           total={movies.totalCount}
           pageSize={8}
