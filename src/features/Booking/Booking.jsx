@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import ChairList from "./components/ChairList";
+import MovieTicket from "./components/MovieTicket";
+import { fetchBookTickets } from "./redux/action";
 
 const Booking = () => {
+  const params = useParams();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // set data store list đặt vé
+    const maPhimChieu = params.maId;
+    dispatch(fetchBookTickets(maPhimChieu));
+  }, [params]);
+
   return (
-    <div>
-      <h1>Booking</h1>
+    <div className="container mx-auto mb-10">
+      <h2 className="text-center">trang đặt vé</h2>
+      <div className="flex justify-evenly  ">
+        <div className="basis-6/12">
+          <h2 className="text-center bg-green-600">SCREEN</h2>
+          <ChairList />
+        </div>
+        <div className="basis-4/12">
+          <MovieTicket/>
+        </div>
+      </div>
     </div>
   );
 };

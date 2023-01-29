@@ -89,10 +89,42 @@ export const fetchCinemasAction = async (next) => {
       method: "GET",
       url: apiPath.CINEMAS,
     });
-    //console.log(res.data);
     next({
       type: actions.SET_CINEMAS,
       payload: res.data.content,
     });
   } catch (err) {}
+};
+// get api đặt vé
+export const fetchBookTickets = (maId) => {
+  return async (next) => {
+    try {
+      const res = await requester({
+        method: "GET",
+        url: apiPath.BOOK_TICKET_LIST,
+        params: {
+          MaLichChieu: maId,
+        },
+      });
+      //console.log("data",res.data);
+      next({
+        type: actions.SET_TICKET,
+        payload: res.data.content,
+      });
+    } catch (err) {}
+  };
+};
+
+export const postBookTickets = (value) => {
+  return async (next) => {
+    try {
+      await requester({
+        method: "POST",
+        url: apiPath.BOOK_TICKET,
+        data: value,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 };

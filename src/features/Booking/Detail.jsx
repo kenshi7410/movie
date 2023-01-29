@@ -2,7 +2,7 @@ import { Button, Col, Modal, Rate, Row, Tabs, Tag } from "antd";
 import moment from "moment/moment";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   fetchMovieDetailAction,
   fetchMovieDetailScheduleAction,
@@ -12,7 +12,6 @@ const MovieDetail = () => {
   // cách dùng modal
 
   const [openModal, setOpenModal] = useState(false);
-
   const showModal = () => {
     setOpenModal(true);
   };
@@ -28,26 +27,26 @@ const MovieDetail = () => {
 
     setOpenModal(false);
   };
-  //
 
   const params = useParams();
-  const movieDetail = useSelector((state) => state.booking.movieDetail);
-  const movieDetailSchedule = useSelector(
-    (state) => state.booking.movieDetailSchedule
-  );
-  const dispatch = useDispatch();
+
   useEffect(() => {
     const movieID = params.id;
     dispatch(fetchMovieDetailAction(movieID));
     dispatch(fetchMovieDetailScheduleAction(movieID));
   }, [params]);
-  //console.log(params);
+  const movieDetail = useSelector((state) => state.booking.movieDetail);
+  const movieDetailSchedule = useSelector(
+    (state) => state.booking.movieDetailSchedule
+  );
+
+  const dispatch = useDispatch();
 
   // cắt video từ youtube từ watch sang chuẩn embed để chèn vào web
 
   let trailer = "";
-  trailer = movieDetail ;
-  console.log(trailer,"daasd")
+  trailer = movieDetail;
+  //console.log("daasd", movieDetail);
 
   return (
     movieDetail && (
@@ -107,7 +106,7 @@ const MovieDetail = () => {
                 (itemRap, index) => {
                   return {
                     label: (
-                      <div>
+                      <div key={index}>
                         <img
                           alt={itemRap.maHeThongRap}
                           className="w-24"
@@ -117,19 +116,25 @@ const MovieDetail = () => {
                         {itemRap.tenHeThongRap}
                       </div>
                     ),
-                    key: { index },
-                    children: itemRap.cumRapChieu.map((itemCumRap) => {
+                    key: itemRap.maHeThongRap,
+                    children: itemRap.cumRapChieu.map((itemCumRap, index) => {
+                      // console.log("itemCumRap", itemCumRap);
                       return (
-                        <p className="text-lg text-green-700">
+                        <p key={index} className="text-lg text-green-700">
                           {itemCumRap.tenCumRap} {itemCumRap.diaChi}
-                          <p></p>
+                          <br />
                           {itemCumRap.lichChieuPhim.map((itemLichChieu) => {
                             return (
-                              <Tag>
-                                {moment(itemLichChieu.ngayChieuGioChieu).format(
-                                  "DD-MM-YYYY ~ hh:mm"
-                                )}
-                              </Tag>
+                              <Link
+                                key={itemLichChieu.maLichChieu}
+                                to={`/booking/${itemLichChieu.maLichChieu}`}
+                              >
+                                <Button className="mr-4 mb-4">
+                                  {moment(
+                                    itemLichChieu.ngayChieuGioChieu
+                                  ).format("DD-MM-YYYY ~ hh:mm")}
+                                </Button>
+                              </Link>
                             );
                           })}
                         </p>
@@ -138,14 +143,6 @@ const MovieDetail = () => {
                   };
                 }
               )}
-
-              // {[
-              //   {
-              //     label: `Tab 1`,
-              //     key: 1,
-              //     children: `Content of Tab 1`,
-              //   },
-              // ]}
             />
 
             {/* <iframe
@@ -166,17 +163,6 @@ const MovieDetail = () => {
           onCancel={closeModal}
           width={800}
         >
-          {/* nội dung trong modal 
-          
-          closure function
-            function (a){
-               function (b){
-                a+b
-               }
-            }
-
-          */}
-
           <iframe
             id="video-trailer"
             title="Trailer"

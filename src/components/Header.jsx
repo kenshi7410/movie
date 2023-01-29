@@ -11,7 +11,12 @@ const Header = () => {
           Cyber Movie
         </Link>
         {profile ? (
-          <span className="text-white text-xl">Xin chào, {profile.hoTen}</span>
+          <Link
+            to="/thongtintaikhoan"
+            className="text-white no-underline text-xl"
+          >
+            Xin chào, {profile.hoTen}
+          </Link>
         ) : (
           <nav>
             <NavLink

@@ -1,7 +1,8 @@
-import { Tabs, Tag } from "antd";
+import { Button, Tabs } from "antd";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getScheludeMovieCinema } from "../utils/bookService";
 
 const ScheduleMovie = () => {
@@ -24,11 +25,11 @@ const ScheduleMovie = () => {
           );
         }}
         tabPosition="left"
-        items={cinemas.map((itemRap) => {
+        items={cinemas.map((itemRap, index) => {
           return {
             label: (
               <img
-                key={itemRap.maHeThongRap}
+                key={index}
                 alt={itemRap.maHeThongRap}
                 className="w-24"
                 src={itemRap.logo}
@@ -40,14 +41,14 @@ const ScheduleMovie = () => {
                 tabPosition="left"
                 items={
                   listSchedule.length > 0 &&
-                  listSchedule[0].lstCumRap.map((itemCumRap) => {
+                  listSchedule[0].lstCumRap.map((itemCumRap, index) => {
                     let phimDangChieu = itemCumRap.danhSachPhim.filter(
                       (itemDanhSachPhim) => itemDanhSachPhim.dangChieu
                     );
                     //console.log(itemCumRap);
                     return {
                       label: (
-                        <div className="flex gap-3 text-left">
+                        <div key={index} className="flex gap-3 text-left">
                           <div>
                             <img
                               alt={itemCumRap.maCumRap}
@@ -68,7 +69,10 @@ const ScheduleMovie = () => {
 
                         if (index < 8) {
                           return (
-                            <div key={itemDanhSachPhim.maPhim} className="flex">
+                            <div
+                              key={itemDanhSachPhim.maPhim}
+                              className="flex mb-3"
+                            >
                               <div>
                                 <img
                                   alt={itemDanhSachPhim.maPhim}
@@ -76,7 +80,7 @@ const ScheduleMovie = () => {
                                   src={itemDanhSachPhim.hinhAnh}
                                 />
                               </div>
-                              <div>
+                              <div className="ml-3">
                                 <p className="my-0">
                                   {itemDanhSachPhim.tenPhim}
                                 </p>
@@ -84,11 +88,15 @@ const ScheduleMovie = () => {
                                 {itemDanhSachPhim.lstLichChieuTheoPhim.map(
                                   (itemGioChieu) => {
                                     return (
-                                      <Tag>
-                                        {moment(
-                                          itemGioChieu.ngayChieuGioChieu
-                                        ).format("DD-MM-YYYY ~ hh:mm")}
-                                      </Tag>
+                                      <Link
+                                        to={`/booking/${itemGioChieu.maLichChieu}`}
+                                      >
+                                        <Button className="mr-4 mb-4">
+                                          {moment(
+                                            itemGioChieu.ngayChieuGioChieu
+                                          ).format("DD-MM-YYYY ~ hh:mm")}
+                                        </Button>
+                                      </Link>
                                     );
                                   }
                                 )}

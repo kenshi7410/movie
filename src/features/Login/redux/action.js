@@ -10,18 +10,16 @@ export const loginAction = (userLogin) => {
         url: apiPath.USER,
         data: userLogin,
       });
-
       next({
         type: actionLogin.SET_PROFILE,
         payload: res.data.content,
       });
+      localStorage.setItem("accessToken", res.data.content.accessToken);
       // set localStorage => cơ chế tránh token bị mất => refresh token || fingerprint
 
       // set cookies
-
-      localStorage.setItem("token", res.data.content.accessToken);
     } catch (err) {
-      throw err;
+      throw err.response.data.content;
     }
   };
 };
@@ -30,8 +28,7 @@ export const fetchProfileAction = async (next) => {
   try {
     const res = await requester({
       method: "POST",
-      url: apiPath.USER_ABC,
-      
+      url: apiPath.USER_INFOR,
     });
     next({
       type: actionLogin.SET_PROFILE,
@@ -40,4 +37,17 @@ export const fetchProfileAction = async (next) => {
   } catch (err) {
     console.log(err);
   }
+};
+export const signupAction = (account) => {
+  return async (next) => {
+    try {
+      await requester({
+        method: "POST",
+        url: apiPath.SIGNUP,
+        data: account,
+      });
+    } catch (err) {
+      throw err.response.data.content;
+    }
+  };
 };

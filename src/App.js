@@ -1,5 +1,11 @@
 // import Demo from "demoHook/Demo";
 import Header from "components/Header";
+import AddFilm from "features/Admin/AddFilm";
+import Admin from "features/Admin/Admin";
+import User from "features/Admin/User";
+import EditFilm from "features/Admin/EditFilm";
+import ShowTime from "features/Admin/ShowTime";
+
 import Booking from "features/Booking/Booking";
 import MovieDetail from "features/Booking/Detail";
 import Home from "features/Booking/Home";
@@ -12,6 +18,8 @@ import { useDispatch } from "react-redux";
 // import chuyển trang cho react
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
+import AddUser from "features/Admin/AddUser";
+import UserInfor from "features/Login/UserInfor";
 
 function App() {
   // const [count1, setCount1] = useState(0);
@@ -23,7 +31,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     // dispatch async action fetch profile
-    dispatch(fetchProfileAction)
+    dispatch(fetchProfileAction);
   }, []);
 
   return (
@@ -44,14 +52,23 @@ function App() {
 
     /* <Demo testMemo={testMemo} /> */
 
+    // phần chính
+
     <BrowserRouter>
       <Header />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/detail/:id" element={<MovieDetail />} />
-        <Route path="/booking" element={<Booking />} />
+        <Route path="/booking/:maId" element={<Booking />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/thongtintaikhoan" element={<UserInfor />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/addnew" element={<AddFilm />} />
+        <Route path="/admin/edit/:idFilm" element={<EditFilm />} />
+        <Route path="/admin/showtime/:idFilm" element={<ShowTime />} />
+        <Route path="/admin/user" element={<User />} />
+        <Route path="/admin/user/addnew" element={<AddUser />} />
       </Routes>
     </BrowserRouter>
   );

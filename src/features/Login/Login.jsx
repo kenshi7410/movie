@@ -1,12 +1,12 @@
 import { Button, Form, Input } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginAction } from "./redux/action";
 
 const Login = () => {
   const dispatch = useDispatch();
-
+  const [iserr, setIserr] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async (values) => {
@@ -17,7 +17,7 @@ const Login = () => {
       // navigate user qua trang home
       navigate("/");
     } catch (err) {
-      console.log(err.response.data.content);
+      setIserr(err);
     }
 
     // trả về thông tin user login thành công => res.data.content
@@ -32,7 +32,8 @@ const Login = () => {
   };
   return (
     <div className="container text-center mx-auto ">
-      <h1>Login</h1>
+      <h1 className="mb-0">Login</h1>
+      <h2 className="text-red-600 text-center my-0">{iserr}</h2>
       <div className="flex justify-center pt-5">
         <Form name="basic" onFinish={handleLogin}>
           <Form.Item
