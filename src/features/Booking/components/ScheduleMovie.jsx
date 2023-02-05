@@ -16,7 +16,7 @@ const ScheduleMovie = () => {
   }, [cinemas]);
 
   return (
-    <div className="container mx-">
+    <div className="container mx-auto sm:hidden lg:block">
       <Tabs
         onChange={(key) => {
           getScheludeMovieCinema(key).then(
@@ -48,7 +48,7 @@ const ScheduleMovie = () => {
                     //console.log(itemCumRap);
                     return {
                       label: (
-                        <div key={index} className="flex gap-3 text-left">
+                        <div key={index} className="flex gap-3 text-left ">
                           <div>
                             <img
                               alt={itemCumRap.maCumRap}

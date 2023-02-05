@@ -59,7 +59,7 @@ const AddFilm = () => {
           <h2>Thêm phim mới</h2>
           <Form
             labelCol={{
-              span: 4,
+              span:4,
             }}
             wrapperCol={{
               span: 14,

@@ -50,14 +50,16 @@ const MovieDetail = () => {
 
   return (
     movieDetail && (
-      <div className="container mx-auto pt-20">
+      <div className="container mx-auto sm:pt-10 lg:pt-14 xl:pt-20">
         <Row>
           <Col span={8}>
             <img className="w-full" alt="" src={movieDetail.hinhAnh} />
           </Col>
-          <Col className="pl-10" span={16}>
-            <h2 className="text-2xl">{movieDetail.tenPhim}</h2>
-            <p className="text-2xl">{movieDetail.moTa}</p>
+          <Col className="pl-10 " span={16}>
+            <h2 className="sm:text-base lg:text-2xl my-0">
+              {movieDetail.tenPhim}
+            </h2>
+            <p className="sm:text-base lg:text-2xl my-0">{movieDetail.moTa}</p>
 
             <table className="table-auto text-2xl text-left border-spacing-5">
               <tbody>
@@ -84,7 +86,7 @@ const MovieDetail = () => {
                 <tr>
                   <td>
                     <Button
-                      className="mr-3"
+                      className="mr-3 mb-3"
                       type="primary"
                       size="large"
                       onClick={showModal}
@@ -109,7 +111,7 @@ const MovieDetail = () => {
                       <div key={index}>
                         <img
                           alt={itemRap.maHeThongRap}
-                          className="w-24"
+                          className="sm:w-12 lg:w-24"
                           src={itemRap.logo}
                         />
                         <br />

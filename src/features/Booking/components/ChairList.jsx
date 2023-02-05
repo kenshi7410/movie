@@ -14,7 +14,7 @@ const ChairList = () => {
 
   //console.log(movieTicket)
   return (
-    <div className="grid grid-cols-12 gap-3 ">
+    <div className="grid grid-cols-12 sm:gap-1 xl:gap-3 ">
       {movieTicket.danhSachGhe?.map((soGhe) => {
         return (
           <Button

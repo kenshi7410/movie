@@ -5,9 +5,9 @@ import { NavLink, Link } from "react-router-dom";
 const Header = () => {
   const profile = useSelector((state) => state.user.profile);
   return (
-    <header className="bg-slate-900 h-20">
+    <header className="bg-slate-900 h-20 px-4">
       <div className="container h-full mx-auto flex justify-between items-center">
-        <Link to="/" className="text-4xl text-white no-underline">
+        <Link to="/" className="sm:text-2xl lg:text-4xl text-white no-underline">
           Cyber Movie
         </Link>
         {profile ? (

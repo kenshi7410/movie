@@ -57,10 +57,10 @@ const User = () => {
                 <tr className=" border-solid border-0 border-b-2  border-gray-300">
                   <th className="py-5 w-10">STT</th>
                   <th>Tài khoản</th>
-                  <th>Mật khẩu</th>
+                  <th className="sm:hidden xl:table-cell">Mật khẩu</th>
                   <th>Họ Tên</th>
-                  <th>Email</th>
-                  <th>Số điện thoại</th>
+                  <th className="sm:hidden lg:table-cell">Email</th>
+                  <th className="sm:hidden xl:table-cell">Số điện thoại</th>
                   <th className="w-24">Hành động</th>
                 </tr>
               </thead>
@@ -73,10 +73,10 @@ const User = () => {
                     >
                       <td>{index + 1}</td>
                       <td className="py-5">{item.taiKhoan}</td>
-                      <td>{item.matKhau}</td>
+                      <td className="sm:hidden xl:table-cell">{item.matKhau}</td>
                       <td className="px-5">{item.hoTen}</td>
-                      <td className="px-5">{item.email}</td>
-                      <td className="px-5">
+                      <td className="px-5 sm:hidden lg:table-cell">{item.email}</td>
+                      <td className="px-5 sm:hidden xl:table-cell">
                         {item.soDT}
                         {item.soDt}
                       </td>

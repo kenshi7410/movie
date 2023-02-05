@@ -16,18 +16,15 @@ const Login = () => {
       await dispatch(loginAction(values));
       // navigate user qua trang home
       navigate("/");
+      await window.location.reload();
     } catch (err) {
       setIserr(err);
     }
 
     // trả về thông tin user login thành công => res.data.content
-
     // lưu data lên store
-
     // save set localStorage
-
     // get localStorage khi cần sử dụng
-
     // navigate user qua trang home
   };
   return (

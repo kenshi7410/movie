@@ -16,13 +16,13 @@ const Booking = () => {
 
   return (
     <div className="container mx-auto mb-10">
-      <h2 className="text-center">trang đặt vé</h2>
+      <h2 className="text-center sm:my-3">trang đặt vé</h2>
       <div className="flex justify-evenly  ">
         <div className="basis-6/12">
           <h2 className="text-center bg-green-600">SCREEN</h2>
           <ChairList />
         </div>
-        <div className="basis-4/12">
+        <div className="xl:basis-4/12 sm:basis-5/12">
           <MovieTicket/>
         </div>
       </div>

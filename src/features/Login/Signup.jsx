@@ -18,8 +18,8 @@ const layout = {
 const validateMessages = {
   required: "${label} chưa nhập",
   types: {
-    email: "${label} is not a valid email!",
-    number: "${label} is not a valid number!",
+    email: "${label} không hợp lệ !",
+    number: "${label} bắt buộc phải là số !",
   },
   number: {
     range: "${label} must be between ${min} and ${max}",
@@ -128,7 +128,7 @@ const Signup = () => {
           rules={[
             {
               required: true,
-              message: "Số điện thoại chưa nhập ",
+              type:"number"
             },
           ]}
         >

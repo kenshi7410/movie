@@ -38,6 +38,19 @@ export const fetchProfileAction = async (next) => {
     console.log(err);
   }
 };
+export const putProfileAction = (item) => {
+  return async (next) => {
+    try {
+      await requester({
+        method: "PUT",
+        url: apiPath.USER_EDIT,
+        data: item,
+      });
+    } catch (err) {
+      throw err.response.data.content;
+    }
+  };
+};
 export const signupAction = (account) => {
   return async (next) => {
     try {

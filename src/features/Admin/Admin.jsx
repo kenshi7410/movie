@@ -59,9 +59,9 @@ const Admin = () => {
               <thead className=" bg-slate-100">
                 <tr className=" border-solid border-0 border-b-2  border-gray-300">
                   <th className="py-5">Mã phim</th>
-                  <th>Hình ảnh</th>
+                  <th className="sm:hidden lg:table-cell">Hình ảnh</th>
                   <th>Tên phim</th>
-                  <th className="m-9 w-5/12 ">Mô tả</th>
+                  <th className="m-9 w-5/12 sm:hidden lg:table-cell">Mô tả</th>
                   <th>Hành động</th>
                 </tr>
               </thead>
@@ -74,15 +74,15 @@ const Admin = () => {
                       className=" border-solid border-0 border-b-2  border-gray-300"
                     >
                       <td>{item.maPhim}</td>
-                      <td className="py-5">
+                      <td className="py-5 sm:hidden lg:table-cell">
                         <img
-                          className="w-24 h-32"
+                          className="w-24 h-32 "
                           src={item.hinhAnh}
                           alt={item.tenPhim}
                         />
                       </td>
                       <td>{item.tenPhim}</td>
-                      <td className="px-5">{item.moTa}</td>
+                      <td className="px-5 sm:hidden lg:table-cell">{item.moTa}</td>
                       <td>
                         <Link
                           className="text-2xl text-green-600"
@@ -91,7 +91,7 @@ const Admin = () => {
                           <CalendarOutlined />
                         </Link>
                         <Link
-                          className="text-2xl mx-4"
+                          className="text-2xl sm:mx-2 xl:mx-4"
                           to={`/admin/edit/${item.maPhim}`}
                         >
                           <EditOutlined />
