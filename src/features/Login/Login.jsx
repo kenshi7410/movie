@@ -71,6 +71,11 @@ const Login = () => {
           </Form.Item>
         </Form>
       </div>
+
+      <h3>
+        tài khoản admin: 123abc
+        <br /> mật khẩu: 0123456789
+      </h3>
     </div>
   );
 };
