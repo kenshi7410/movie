@@ -128,7 +128,6 @@ const Signup = () => {
           rules={[
             {
               required: true,
-              type:"number"
             },
           ]}
         >

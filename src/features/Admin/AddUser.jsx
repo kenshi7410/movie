@@ -97,7 +97,6 @@ const AddUser = () => {
               initialValue={state?.matKhau}
               rules={[
                 {
-                 
                   required: true,
                 },
               ]}
@@ -110,7 +109,6 @@ const AddUser = () => {
               initialValue={state?.soDt}
               rules={[
                 {
-                  type:"number",
                   required: true,
                 },
               ]}

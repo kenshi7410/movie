@@ -210,7 +210,6 @@ const UserInfor = () => {
                 rules={[
                   {
                     required: true,
-                    type:"number"
                   },
                 ]}
               >
